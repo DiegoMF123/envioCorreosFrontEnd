@@ -1,0 +1,45 @@
+.top {
+    margin-top: 20px;
+  }
+  
+  .bottom {
+    margin-bottom: 20px;
+  }
+  
+  .btn-add {
+    margin: 20px 20px 0 16px;
+  }
+  
+  ::ng-deep #header .mat-checkbox-frame {
+    border-color: white;
+  }
+  
+  ::ng-deep .cdk-overlay-container {
+    z-index: 1200 !important;
+  }
+  .verde{
+    background-color: green;
+    color: white;
+  }
+  
+  .amarillo{
+    background-color: yellow;
+  }
+  
+  .rojo{
+    background-color: red;
+    color: white;
+  }
+  
+  .selected{
+    color: #1369a0;
+    font-weight: bold;
+  }
+  
+  ::ng-deep .mat-sort-header-arrow {
+    color: #fff !important;
+  }
+  
+  .iconos{
+    color: black;
+  }

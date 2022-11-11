@@ -1,0 +1,38 @@
+
+
+<div id="content" class="page"  style="opacity: 0.0; position: fixed;">
+    <p>
+
+    <p>
+        <br>
+    <form>
+        
+        <div class="letra">
+            <mat-label>Estimado(a) {{destinatario?.nombreDestinatario}} {{destinatario?.apellidoDestinatario}} </mat-label>
+        </div>
+
+        <br><br>
+          <div class="letra">
+            <div>Usted ha sido cordialmente invitado a {{destinatario?.cuerpo}}</div>
+          </div>
+
+          <br><br>  <br>
+          <div class="letra">
+            <div>{{destinatario?.direccion}}</div>
+          </div>
+
+          <div class="letra">
+            <div>{{destinatario?.fecha}}</div>
+          </div>
+          <div class="letra">
+            <div>{{destinatario?.hora}}</div>
+          </div>
+          <br> <br>
+          <div class="letra">
+            <div>{{destinatario?.remitente}}</div>
+          </div>
+          <div class="letra">
+            <div>{{destinatario?.telefono}}</div>
+          </div>
+    </form>
+</div>

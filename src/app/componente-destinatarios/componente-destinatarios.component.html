@@ -1,0 +1,90 @@
+<div>
+  <div class="card-body">
+    <mat-card-title class="titulo">Destinatarios</mat-card-title>
+    <button mat-raised-button type="button" color="primary" (click)="regresar()" class="btn-container mt-3">
+      <mat-icon>arrow_back</mat-icon>
+      Regresar
+    </button>
+    <mat-card class="margenTarjeta">
+      <mat-horizontal-stepper labelPosition="bottom" #stepper [linear]="isLinear">
+        <mat-step [stepControl]="destinatarioForm">
+          <ng-template matStepLabel>Destinatarios</ng-template>
+          <div class="row d-flex justify-content-center">
+            <div class="col-sm-8">
+              <form [formGroup]="destinatarioForm">
+
+                <div class="row">
+                  <div class="col">
+                    <mat-form-field appearance="standard">
+                      <mat-label>Nombre</mat-label>
+                      <input matInput formControlName="nombreDestinatario">
+                    </mat-form-field>
+                  </div>
+                  <div class="col">
+                    <mat-form-field appearance="standard">
+                      <mat-label>Apellido</mat-label>
+                      <input matInput formControlName="apellidoDestinatario">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+
+                  <div class="col">
+                    <mat-form-field appearance="standard">
+                      <mat-label>Correo Electrónico</mat-label>
+                      <input matInput formControlName="correoDestinatario">
+                    </mat-form-field>
+                  </div>
+                  <div class="col">
+                    <mat-form-field appearance="standard">
+                      <mat-label>Número de Teléfono</mat-label>
+                      <input matInput autocomplete="off" type="number" maxlength="8"
+                        formControlName="numeroDestinatario">
+                    </mat-form-field>
+                  </div>
+
+                </div>
+
+                <div class="row">
+
+                  <div class="col">
+                    <mat-form-field>
+                      <mat-label>Dirección</mat-label>
+                      <textarea matInput formControlName="direccionDestinatario" #obs maxlength="200"></textarea>
+                      <mat-hint align="end">{{obs.value.length}} / 200</mat-hint>
+                    </mat-form-field>
+                  </div>
+
+                </div>
+
+
+
+              </form>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="row mt-1 pt-3">
+            <div class="ml-auto ml-3">
+              <button mat-raised-button color="warn" type="button" class="btn-container mr-2 mt-3" (click)="limpiar()">
+                <mat-icon>clear</mat-icon>
+                Cancelar
+              </button>
+
+              <button mat-raised-button color="primary" type="button" [disabled]="destinatarioForm.invalid"
+                class="btn-container mr-2" data-dismiss="modal" (click)="guardar()">
+                <mat-icon>
+                  save
+                </mat-icon>
+                Guardar
+              </button>
+
+            </div>
+          </div>
+        </mat-step>
+
+      </mat-horizontal-stepper>
+    </mat-card>
+  </div>
+
+
+</div>

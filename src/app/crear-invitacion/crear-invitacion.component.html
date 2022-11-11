@@ -1,0 +1,169 @@
+<app-invitacion #registroForm [destinatario]="empleado" style="position: absolute;"></app-invitacion>
+<div>
+  <div class="card-body">
+    <mat-card-title class="titulo">Crear Invitacion</mat-card-title>
+    <button mat-raised-button type="button" color="primary" (click)="regresar()" class="btn-container mt-3">
+      <mat-icon>arrow_back</mat-icon>
+      Regresar
+    </button>
+    <mat-card class="margenTarjeta">
+      <mat-horizontal-stepper labelPosition="bottom" #stepper [linear]="isLinear">
+        <mat-step [stepControl]="invitacionForm">
+          <ng-template matStepLabel style="text-align: center;">Datos</ng-template>
+          <div class="row d-flex justify-content-center">
+            <div class="col-sm-8">
+              <form [formGroup]="invitacionForm">
+
+                <div class="row">
+
+                  <div class="col">
+                    <mat-form-field appearance="standard">
+                      <mat-label>Número de Teléfono</mat-label>
+                      <input matInput autocomplete="off" type="number" maxlength="8" formControlName="telefono">
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col">
+                    <mat-form-field appearance="standard">
+                      <mat-label>Nombre del Remitente</mat-label>
+                      <input matInput formControlName="remitente">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+
+                  <div class="col">
+                    <mat-form-field appearance="standard">
+                      <mat-label>Fecha de Invitación</mat-label>
+                      <input #feca matInput [matDatepicker]="fecha" formControlName="fecha" readonly>
+                      <mat-datepicker-toggle matSuffix [for]="fecha">
+                        <mat-icon matDatepickerToggleIcon>date_range</mat-icon>
+                      </mat-datepicker-toggle>
+                      <mat-datepicker #fecha></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col">
+                    <mat-form-field appearance="standard">
+                      <mat-label>Hora de Invitación</mat-label>
+                      <input matInput type="time" placeholder="start date" formControlName="hora">
+                    </mat-form-field>
+                  </div>
+
+                </div>
+                <div class="col">
+                  <mat-form-field appearance="standard">
+                    <mat-label>Dirección</mat-label>
+                    <textarea matInput formControlName="direccion" #obs2></textarea>
+                  </mat-form-field>
+                </div>
+                <div class="col">
+                  <mat-form-field>
+                    <mat-label>Cuerpo</mat-label>
+                    <textarea matInput formControlName="cuerpo" #obs></textarea>
+                 
+                  </mat-form-field>
+                </div>
+                <button mat-raised-button color="primary" type="button" data-toggle="modal" data-target="#elegirDest"
+                  class="btn-container mr-2" [disabled]="invitacionForm.invalid">
+                  <mat-icon>
+                    edit
+                  </mat-icon>
+                  Elegir un destinatario
+                </button>
+              </form>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="row mt-1 pt-3">
+            <div class="ml-auto ml-3">
+              <button mat-raised-button color="warn" type="button" class="btn-container mr-2 mt-3" (click)="limpiar()">
+                <mat-icon>clear</mat-icon>
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </mat-step>
+
+      </mat-horizontal-stepper>
+    </mat-card>
+  </div>
+
+</div>
+
+
+<!-- Modal para elegir un Destinatario -->
+<div class="modal fade" id="elegirDest" tabindex="-1" role="dialog" aria-labelledby="elegirDest" aria-hidden="true"
+  data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="elegirDest">Elige a un Destinatario</h2>
+        <button #close type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="limpiar()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row d-flex justify-content-center">
+          <div class="col-sm-12">
+            <div class="container-fluid">
+
+              <div class="mat-elevation-z8">
+                <div class="table-responsive">
+                  <table mat-table [dataSource]="dataSource" class="tab">
+                    <ng-container matColumnDef="seleccionar">
+                      <th mat-header-cell *matHeaderCellDef class="header-table start"
+                        style="padding-top: 7px; color: black !important;">
+                        <mat-checkbox id="header" (change)="$event ? masterToggle() : null"
+                          [checked]="selection.hasValue() && isAllSelected()"
+                          [indeterminate]="selection.hasValue() && !isAllSelected()" [color]="'secondary'">
+                        </mat-checkbox>
+                      </th>
+                      <td mat-cell *matCellDef="let element">
+                        <div>
+                          <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? selection.toggle(element) : null"
+                            [checked]="selection.isSelected(element)" color="primary">
+                          </mat-checkbox>
+                        </div>
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="nombreDestinatario">
+                      <th mat-header-cell *matHeaderCellDef class="header-table"> Nombre </th>
+                      <td mat-cell *matCellDef="let element">
+                        {{element.nombreDestinatario}}
+                      </td>
+                    </ng-container>
+                    <ng-container matColumnDef="apellidoDestinatario">
+                      <th mat-header-cell *matHeaderCellDef class="header-table"> Apellido </th>
+                      <td mat-cell *matCellDef="let element">
+                        {{element.apellidoDestinatario}}
+                      </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="headerColumnNames"></tr>
+                    <tr mat-row *matRowDef="let row; columns: headerColumnNames"></tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button mat-raised-button type="button" color="warn" class="btn-container btn-add"
+          style="margin: 7px !important;" data-dismiss="modal">
+          <mat-icon>clear</mat-icon>
+          Cancelar
+        </button>
+        <button mat-raised-button color="primary" type="button" [disabled]="selection.selected.length == 0"
+          class="btn-container mr-2" data-dismiss="modal" (click)="generarPDF()">
+          <mat-icon>
+            save
+          </mat-icon>
+          Generar Invitacion
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

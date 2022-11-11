@@ -1,0 +1,83 @@
+.margen {
+    margin-top: 2%;
+  }
+  
+  ::ng-deep .cdk-overlay-container {
+    z-index: 1200 !important;
+  }
+  
+  .botones {
+    margin-left: 2%;
+    color: white;
+    background-color: #1369a0;
+  }
+  
+  .btnCancelar {
+    margin-left: 2%;
+    color: white;
+    background-color: red;
+  }
+  
+  .margenObservaciones {
+    margin-left: 2%;
+  }
+  
+  .tamañoTextArea {
+    resize: vertical;
+    resize: none;
+    width: 100%;
+    margin-left: 3%;
+  }
+  
+  .margenTarjeta {
+    margin-top: 2%;
+  }
+  
+  .tituloCentrado {
+    text-align: center;
+  }
+  
+  ::ng-deep .mat-horizontal-stepper-header {
+    pointer-events: none !important;
+  }
+  
+  .top {
+    margin-top: 20px;
+  }
+  
+  .bottom {
+    margin-bottom: 20px;
+  }
+  
+  .btn-add {
+    margin: 20px 20px 0 0;
+  }
+  
+  ::ng-deep .mat-checkbox-label {
+    color: black;
+  }
+  
+  mat-divider.divider {
+    border-top-color: #949494;
+    border-top-width: 1.8px;
+    animation-delay: 0.25s;
+  }
+  
+  mat-divider.disabled {
+    border-top-style: dashed;
+    border-top-color: #B0B0B0;
+    pointer-events: none;
+  
+    .form-check,
+    label {
+      color: #B0B0B0;
+    }
+  }
+  
+  #divider:hover {
+    mat-divider.divider:not(.disabled) {
+      border-top-color: black;
+      border-top-width: 2px;
+    }
+  }
+  

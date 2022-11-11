@@ -1,0 +1,36 @@
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="titulo2">
+                <mat-card-title class="text-center p-3"> Menú para Plantillas</mat-card-title>
+            </div>
+        </div>
+    </div>
+    <br>
+    <button mat-raised-button type="button" class="btn-container btn-add botones" data-toggle="modal"
+    [routerLink]="['/menu']">
+    <mat-icon>menu</mat-icon>
+    Regresar a Menú
+</button>
+
+</div>
+
+<div class="container col-sm-12 col-md-8 col-xs-6 col-lg-6">
+    <div class="row" >
+        <div class="col-sm-6 col-lg-6 col-md-6 mt-4 col-xs-12">
+            <a [routerLink]="['/carta']">
+                <div class="zoom">
+                    <img src="assets/icons/carta.png">
+                </div>
+            </a>
+        </div>
+        <div class="col-sm-6 col-lg-6 col-md-6 mt-4 col-xs-12">
+            <a [routerLink]="['/sobre']">
+                <div class="zoom">
+                    <img src="assets/icons/sobre.png">
+                </div>
+            </a>
+        </div>
+       
+    </div>
+</div>
